@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class operateur extends CI_Model {
+class Operateur extends CI_Model {
     // $data = array(
     //     'nom' => $this->input->post('nom'),
     // );
@@ -19,6 +19,11 @@ class operateur extends CI_Model {
     public function get_all_with_deleted() {
         $query = $this->db->get('operateur');
         return $query->result_array();
+    }
+
+    public function insert($data) {
+        $data['deleted'] = FALSE;
+        return $this->db->insert('operateur', $data);
     }
 
     public function update($id, $data) {

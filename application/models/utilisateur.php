@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class utilisateur extends CI_Model {
+class Utilisateur extends CI_Model {
     // $data = array(
     //     'nom' => $this->input->post('nom'),
     //     'prenom' => $this->input->post('prenom'),
@@ -12,11 +12,6 @@ class utilisateur extends CI_Model {
     //     'telephone' => $this->input->post('telephone')
     // );
 
-    public function insert($data) {
-        $data['deleted'] = FALSE;
-        return $this->db->update('insert', $data);
-    }
-    
     public function get_by_id($id) {
         $query = $this->db->get_where('utilisateur', array('id' => $id));
         return $query->row_array();
@@ -30,6 +25,11 @@ class utilisateur extends CI_Model {
     public function get_all_with_deleted() {
         $query = $this->db->get('utilisateur');
         return $query->result_array();
+    }
+    
+    public function insert($data) {
+        $data['deleted'] = FALSE;
+        return $this->db->insert('utilisateur', $data);
     }
 
     public function update($id, $data) {
