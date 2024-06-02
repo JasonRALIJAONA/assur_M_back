@@ -11,6 +11,7 @@ CREATE TABLE utilisateur(
    email VARCHAR(50)  NOT NULL,
    mdp VARCHAR(50)  NOT NULL,
    telephone VARCHAR(20)  NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
@@ -26,12 +27,14 @@ CREATE TABLE assurance(
 CREATE TABLE type_vehicule(
    id SERIAL,
    nom VARCHAR(50) ,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
 CREATE TABLE operateur(
    id SERIAL,
    nom VARCHAR(50)  NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
