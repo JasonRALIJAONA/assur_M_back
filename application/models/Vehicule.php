@@ -34,6 +34,7 @@ class Vehicule extends CI_Model {
     }
 
     public function delete($id){
-        return $this->db->delete('vehicule', array('id' => $id));
+        $this->db->where('id', $id);
+        return $this->db->update('vehicule', array('deleted' => TRUE));
     }
 }
