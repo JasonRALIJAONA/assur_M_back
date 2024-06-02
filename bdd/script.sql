@@ -46,6 +46,7 @@ CREATE TABLE vehicule(
    place INTEGER NOT NULL,
    id_type INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(id_type) REFERENCES type_vehicule(id),
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id)
@@ -58,6 +59,7 @@ CREATE TABLE facture(
    police_assurance VARCHAR(50)  NOT NULL,
    id_assurance INTEGER NOT NULL,
    id_vehicule INTEGER NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(id_assurance) REFERENCES assurance(id),
    FOREIGN KEY(id_vehicule) REFERENCES vehicule(id)
