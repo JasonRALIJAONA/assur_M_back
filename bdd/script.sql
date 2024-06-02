@@ -11,6 +11,7 @@ CREATE TABLE utilisateur(
    email VARCHAR(50)  NOT NULL,
    mdp VARCHAR(50)  NOT NULL,
    telephone VARCHAR(20)  NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
@@ -20,18 +21,21 @@ CREATE TABLE assurance(
    num_telma VARCHAR(20) ,
    num_orange VARCHAR(20) ,
    num_airtel VARCHAR(20) ,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
 CREATE TABLE type_vehicule(
    id SERIAL,
    nom VARCHAR(50) ,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
 CREATE TABLE operateur(
    id SERIAL,
    nom VARCHAR(50)  NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
@@ -43,6 +47,7 @@ CREATE TABLE vehicule(
    place INTEGER NOT NULL,
    id_type INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(id_type) REFERENCES type_vehicule(id),
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id)
@@ -55,6 +60,7 @@ CREATE TABLE facture(
    police_assurance VARCHAR(50)  NOT NULL,
    id_assurance INTEGER NOT NULL,
    id_vehicule INTEGER NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(id_assurance) REFERENCES assurance(id),
    FOREIGN KEY(id_vehicule) REFERENCES vehicule(id)
