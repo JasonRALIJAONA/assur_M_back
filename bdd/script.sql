@@ -21,6 +21,7 @@ CREATE TABLE assurance(
    num_telma VARCHAR(20) ,
    num_orange VARCHAR(20) ,
    num_airtel VARCHAR(20) ,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
 
