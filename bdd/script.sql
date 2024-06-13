@@ -1,4 +1,4 @@
-CREATE database assur_m;
+6CREATE database assur_m;
 
 \c assur_m;
 
@@ -15,6 +15,7 @@ CREATE TABLE utilisateur(
    PRIMARY KEY(id)
 );
 
+
 CREATE TABLE assurance(
    id SERIAL,
    nom VARCHAR(50) ,
@@ -24,6 +25,7 @@ CREATE TABLE assurance(
    deleted BOOLEAN DEFAULT FALSE NOT NULL,
    PRIMARY KEY(id)
 );
+
 
 CREATE TABLE type_vehicule(
    id SERIAL,
