@@ -21,15 +21,12 @@ class Login extends CI_Controller {
 			$data['error'] = "Identifiants incorrects";
 			$this->load->view("page/login", $data);
 		} else {
-			// echo "<script>alert('Utilisateur vérifié ');</script>";
-			
+			// echo "<script>alert('Utilisateur vérifié ');</script>";		
 			$data = array();
 			$data["clients"] = $this->Utilisateur->get_by_id($reponse);
-			// $data["contents"] = "page/accueil";
-			// $this->load->view("templates/template", $data);
+			$data["contents"] = "page/accueil";
 		}
 	}
-	
 	
     public function retour($id) {
         $data = array();
