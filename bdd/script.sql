@@ -1,6 +1,7 @@
 CREATE database assur_m;
 
 \c assur_m;
+
 CREATE TABLE operateur(
    id SERIAL,
    nom VARCHAR(50)  NOT NULL,
@@ -33,11 +34,20 @@ CREATE TABLE utilisateur(
    PRIMARY KEY(id)
 );
 
-
 CREATE TABLE type_vehicule(
    id SERIAL,
    nom VARCHAR(50) ,
    PRIMARY KEY(id)
+);
+
+CREATE TABLE options(
+   id SERIAL,
+   nom VARCHAR(100)  NOT NULL,
+   descri TEXT,
+   valeur NUMERIC(12,2)   NOT NULL,
+   id_assureur INTEGER,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_assureur) REFERENCES assureur(id)
 );
 
 CREATE TABLE vehicule(
@@ -125,16 +135,6 @@ CREATE TABLE etat(
    id SERIAL,
    libelle VARCHAR(100) ,
    valeur NUMERIC(12,2)  ,
-   id_assureur INTEGER,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id_assureur) REFERENCES assureur(id)
-);
-
-CREATE TABLE options(
-   id SERIAL,
-   nom VARCHAR(100)  NOT NULL,
-   descri TEXT,
-   valeur NUMERIC(12,2)   NOT NULL,
    id_assureur INTEGER,
    PRIMARY KEY(id),
    FOREIGN KEY(id_assureur) REFERENCES assureur(id)
