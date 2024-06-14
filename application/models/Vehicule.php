@@ -2,15 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vehicule extends CI_Model {
-    public function get_by_id($id) {
-        $query = $this->db->get_where('vehicule', array('id' => $id));
-        return $query->row_array();
-    }
-
-    public function get_all() {
-        $query = $this->db->get('vehicule', array('deleted' => FALSE));
-        return $query->result_array();
-    }
     /*
     format de $data :
         $data = array(
@@ -20,13 +11,12 @@ class Vehicule extends CI_Model {
             autre colonne ...
         );
     */
-    public function get_all_with_deleted() {
+    public function get_all() {
         $query = $this->db->get('vehicule');
         return $query->result_array();
     }
 
     public function insert($data) {
-        $data['deleted'] = FALSE;
         return $this->db->insert('vehicule', $data);
     }
 
@@ -37,7 +27,7 @@ class Vehicule extends CI_Model {
     
     public function delete($id) {
         $this->db->where('id', $id);
-        return $this->db->update('vehicule', array('deleted' => TRUE));
+        return $this->db->delete('vehicule');
     }
 }
             
