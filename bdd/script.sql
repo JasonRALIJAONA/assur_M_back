@@ -17,17 +17,6 @@ CREATE TABLE assureur(
    PRIMARY KEY(id)
 );
 
-CREATE TABLE options(
-   id SERIAL,
-   nom VARCHAR(100)  NOT NULL,
-   descri TEXT,
-   valeur NUMERIC(12,2)   NOT NULL,
-   id_assureur INTEGER,
-   FOREIGN KEY(id_assureur) REFERENCES assureur(id),
-   PRIMARY KEY(id)
-);
-
-
 CREATE TABLE utilisateur(
    id SERIAL,
    nom VARCHAR(50)  NOT NULL,
@@ -37,7 +26,7 @@ CREATE TABLE utilisateur(
    email VARCHAR(50)  NOT NULL,
    mdp VARCHAR(50)  NOT NULL,
    telephone VARCHAR(20)  NOT NULL,
-   supprime BOOLEAN DEFAULT FALSE NOT NULL,
+   deleted BOOLEAN DEFAULT FALSE NOT NULL,
    id_operateur INT,
    solde DECIMAL(12,2),
    FOREIGN KEY(id_operateur) REFERENCES operateur(id),
@@ -162,4 +151,3 @@ CREATE TABLE payement(
    FOREIGN KEY(id_vehicule) REFERENCES vehicule(id),
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id)
 );
-

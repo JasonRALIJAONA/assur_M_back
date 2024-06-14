@@ -1,0 +1,79 @@
+-- -- utilisateur
+-- INSERT INTO utilisateur (nom, prenom, adresse, naissance, email, mdp, telephone, deleted, id_operateur, solde) VALUES 
+-- ('Dupont', 'Jean', '123 Rue de la Paix, Paris', '1980-01-15', 'jean.dupont@example.com', 'mdp123', '0601234567', FALSE),
+-- ('Martin', 'Claire', '456 Avenue des Champs, Lyon', '1992-07-22', 'claire.martin@example.com', 'mdp456', '0612345678', FALSE),
+-- ('Bernard', 'Luc', '789 Boulevard du Soleil, Marseille', '1985-05-30', 'luc.bernard@example.com', 'mdp789', '0623456789', FALSE),
+-- ('Durand', 'Sophie', '101 Rue des Fleurs, Toulouse', '1990-12-10', 'sophie.durand@example.com', 'mdp101', '0634567890', FALSE),
+-- ('Lefevre', 'Paul', '202 Chemin de la Plage, Nice', '1975-03-25', 'paul.lefevre@example.com', 'mdp202', '0645678901', FALSE),
+-- ('Rousseau', 'Marie', '303 Rue de Eglise, Bordeaux', '1988-08-08', 'marie.rousseau@example.com', 'mdp303', '0656789012', FALSE),
+-- ('Moreau', 'Antoine', '404 Rue de la Republique, Lille', '1995-11-19', 'antoine.moreau@example.com', 'mdp404', '0667890123', FALSE),
+-- ('Petit', 'Julie', '505 Rue de la Liberté, Nantes', '1982-09-14', 'julie.petit@example.com', 'mdp505', '0678901234', FALSE),
+-- ('Richard', 'Marc', '606 Rue des Ecoles, Strasbourg', '1983-06-22', 'marc.richard@example.com', 'mdp606', '0689012345', FALSE),
+-- ('Garcia', 'Emma', '707 Rue du Moulin, Montpellier', '1991-04-10', 'emma.garcia@example.com', 'mdp707', '0690123456', FALSE);
+
+-- -- assurance
+-- INSERT INTO assureur (nom, num_telma, num_orange, num_airtel) VALUES
+-- ('Mama', '0343522562', ' 0320322555', ''),
+-- ('Ny Havana', '0340722031', '', ''),
+-- ('Aro', '0341422525', '', '');
+
+-- -- type_vehicule
+-- INSERT INTO type_vehicule (nom, deleted) VALUES 
+-- ('Voiture'),
+-- ('Camion'),
+-- ('Bus'),
+-- ('Minibus');
+
+-- -- operateur
+-- INSERT INTO operateur (nom) VALUES 
+-- ('Telma'),
+-- ('Orange'),
+-- ('Airtel');
+
+-- -- vehicule
+-- INSERT INTO vehicule (immatriculation, puissance, marque, place, id_type, id_utilisateur, id_assureur, id_options) VALUES 
+-- ('ABC123DEF', 90.5, 'Toyota', 5, 1, 1),
+-- ('XYZ456GHI', 75.0, 'Honda', 5, 2, 2),
+-- ('LMN789JKL', 120.0, 'Ford', 5, 3, 3),
+-- ('QRS101TUV', 110.3, 'BMW', 4, 4, 4),
+-- ('UVW202XYZ', 65.0, 'Yamaha', 2, 2, 5),
+-- ('GHI303JKL', 140.0, 'Mercedes', 5, 1, 6),
+-- ('DEF404MNO', 80.5, 'Kawasaki', 2, 2, 7),
+-- ('ABC505PQR', 150.0, 'Audi', 5, 4, 8),
+-- ('XYZ606STU', 200.0, 'Lamborghini', 2, 3, 9),
+-- ('LMN707VWX', 60.0, 'Peugeot', 5, 1, 10);
+
+
+-- -- facture 
+-- INSERT INTO facture (date_debut, date_fin, police_assurance, id_assurance, id_vehicule) VALUES 
+-- ('2023-01-01', '2024-01-01', 'PA000001', 1, 4),
+-- ('2023-01-01', '2024-01-01', 'PA000001', 1, 1),
+-- ('2023-01-02', '2024-01-02', 'PA000002', 2, 2),
+-- ('2023-01-03', '2024-01-03', 'PA000003', 3, 3),
+-- ('2023-01-11', '2024-01-11', 'PA000011', 1, 1),
+-- ('2023-01-12', '2024-01-12', 'PA000012', 2, 2),
+-- ('2023-01-13', '2024-01-13', 'PA000013', 3, 3),
+-- ('2023-01-21', '2024-01-21', 'PA000021', 1, 1),
+-- ('2023-01-22', '2024-01-22', 'PA000022', 2, 2),
+-- ('2023-01-23', '2024-01-23', 'PA000023', 3, 3),
+-- ('2023-01-31', '2024-01-31', 'PA000031', 1, 1),
+-- ('2023-02-01', '2024-02-01', 'PA000032', 2, 2),
+-- ('2023-02-02', '2024-02-02', 'PA000033', 3, 3),
+-- ('2023-02-10', '2024-02-10', 'PA000041', 1, 1),
+-- ('2023-02-11', '2024-02-11', 'PA000042', 2, 2),
+-- ('2023-02-12', '2024-02-12', 'PA000043', 3, 3),
+-- ('2023-02-20', '2024-02-20', 'PA000051', 1, 1),
+-- ('2023-02-21', '2024-02-21', 'PA000052', 2, 2),
+-- ('2023-02-22', '2024-02-22', 'PA000053', 3, 3),
+-- ('2023-03-02', '2024-03-02', 'PA000061', 1, 1),
+-- ('2023-03-03', '2024-03-03', 'PA000062', 2, 2),
+-- ('2023-03-04', '2024-03-04', 'PA000063', 3, 3),
+-- ('2023-03-12', '2024-03-12', 'PA000071', 1, 1),
+-- ('2023-03-13', '2024-03-13', 'PA000072', 2, 2),
+-- ('2023-03-14', '2024-03-14', 'PA000073', 3, 3),
+-- ('2023-03-22', '2024-03-22', 'PA000081', 1, 1),
+-- ('2023-03-23', '2024-03-23', 'PA000082', 2, 2),
+-- ('2023-03-24', '2024-03-24', 'PA000083', 3, 3),
+-- ('2023-04-01', '2024-04-01', 'PA000091', 1, 1),
+-- ('2023-04-02', '2024-04-02', 'PA000092', 2, 2),
+-- ('2023-04-03', '2024-04-03', 'PA000093', 3, 3);
