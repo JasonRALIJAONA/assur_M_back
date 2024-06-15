@@ -13,24 +13,26 @@ class Login extends CI_Controller {
     }
 
     public function seconnecter() {
-		$mail = $this->input->post('mail');
-		$mdp = $this->input->post('mdp');
-		
-		$reponse = $this->Utilisateur->log($mail, $mdp);
-		if ($reponse == 0) {
-			$data['error'] = "Identifiants incorrects";
-			$this->load->view("page/login", $data);
-		} else {
-			// echo "<script>alert('Utilisateur vérifié ');</script>";		
-			$data = array();
-			$data["clients"] = $this->Utilisateur->get_by_id($reponse);
-			$data["contents"] = "page/accueil";
-		}
-	}
-	
-    public function retour($id) {
-        $data = array();
-        $data["clients"] = $this->Utilisateur->get_by_id($id);
-        $data["contents"] = "page/accueil";
+        $mail = $this->input->post('mail');
+        $mdp = $this->input->post('mdp');
+        $reponse = $this->Utilisateur->log($mail, $mdp);
+        // echo "idVoaray ==> $reponse <br>";
+
+        if ($reponse == 0) {
+            echo "ATO IZY ZAO";
+            
+            $data['error'] = "Identifiants incorrects";
+            $this->load->view("page/login", $data);
+            // $data["contents"] = "page/accueil";
+        } else {
+            
+            // echo "USER ZAY FA HITA";
+
+            $data = array();
+            $data["clients"] = $this->Utilisateur->get_by_id($reponse);
+            $data["contents"] = "page/accueil";
+            // $this->load->view("templates/template", $data);
+        }
     }
 }
+?>
