@@ -138,6 +138,8 @@ $config['subclass_prefix'] = 'MY_';
 */
 $config['composer_autoload'] = FALSE;
 
+$config['display_errors'] = 1;
+
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
@@ -213,7 +215,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------

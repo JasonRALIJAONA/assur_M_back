@@ -1,3 +1,4 @@
+DROP database assur_m;
 CREATE database assur_m;
 
 \c assur_m;
@@ -152,6 +153,7 @@ CREATE TABLE payement(
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id)
 );
 
+-- operateur
 INSERT INTO operateur (nom) VALUES 
 ('Telma'),
 ('Orange'),
@@ -348,4 +350,3 @@ INSERT INTO payement (date_payement, valeur, frequence, id_vehicule, id_utilisat
 ('2025-07-15', 500.00, 1, 1, 1),
 ('2025-08-15', 500.00, 1, 1, 1),
 ('2025-09-15', 500.00, 1, 1, 1);
-

@@ -1,6 +1,3 @@
-<?php var_dump($statistiques); ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,16 +41,6 @@
                 border-left: none;
                 border-top: 1px solid #ccc;
             }
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-        #chartContainer {
-            width: 70%;
-            margin: auto;
         }
     </style>
 </head>
@@ -144,12 +131,7 @@
                             <span class="menu-title">Vehicule</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#" >
-                            <i class="menu-icon mdi mdi-car"></i>
-                            <span class="menu-title">Type de Vehicule</span>
-                        </a>
-                    </li> -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url('assureur/index'); ?>">
                             <i class="menu-icon mdi mdi-security"></i>
@@ -200,14 +182,39 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h1>Assurance les plus Utilisee</h1>
+                                    <h4 class="card-title">Liste des Vehicules</h4>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Immatriculation</th>
+                                                    <th>Puissance</th>
+                                                    <th>Marque</th>
+                                                    <th>Places</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($vehicules as $vehicule): ?>
+                                                <tr>
+                                                    <td><?php echo $vehicule['id']; ?></td>
+                                                    <td><?php echo $vehicule['immatriculation']; ?></td>
+                                                    <td><?php echo $vehicule['puissance']; ?> cv</td>
+                                                    <td><?php echo $vehicule['marque']; ?></td>
+                                                    <td><?php echo $vehicule['place']; ?></td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="editFormContainer" class="form-container hidden">
                                     
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
                 <!-- content-wrapper ends -->
                 <!-- Footer -->
                 <footer class="footer">
@@ -222,7 +229,6 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
-
 
 </body>
 </html>

@@ -1,6 +1,3 @@
-<?php var_dump($statistiques); ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,16 +41,6 @@
                 border-left: none;
                 border-top: 1px solid #ccc;
             }
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-        #chartContainer {
-            width: 70%;
-            margin: auto;
         }
     </style>
 </head>
@@ -197,17 +184,64 @@
                 <div class="content-wrapper">
                     <!-- Table and form go here -->
                     <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h1>Assurance les plus Utilisee</h1>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Nos Operateurs</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($operateurs as $operateur): ?>
+                            <tr>
+                                <td><?php echo $operateur['id']; ?></td>
+                                <td><?php echo $operateur['nom']; ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Nos Partenaires en Images</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a href="#">
+                                        <img src="<?php echo site_url('assets/images/Telma-logo.jpg');?>" alt="Image 1" width="150" height="150">
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#">
+                                        <img src="<?php echo site_url('assets/images/airtel-logo-white-text-vertical.jpg');?>" alt="Image 2" width="150" height="150">
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#">
+                                        <img src="<?php echo site_url('assets/images/Orange_logo.svg.png');?>" alt="Image 3" width="150" height="150">
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
                 <!-- content-wrapper ends -->
                 <!-- Footer -->
                 <footer class="footer">
@@ -223,6 +257,6 @@
         <!-- page-body-wrapper ends -->
     </div>
 
-
+    
 </body>
 </html>
