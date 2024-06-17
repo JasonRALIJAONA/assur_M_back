@@ -63,7 +63,6 @@ CREATE TABLE vehicule(
    id_options INTEGER,
    carburant VARCHAR(50) ,
    utilisation VARCHAR(100) ,
-
    PRIMARY KEY(id),
    FOREIGN KEY(id_type) REFERENCES type_vehicule(id),
    FOREIGN KEY(id_options) REFERENCES options(id),
@@ -213,7 +212,9 @@ INSERT INTO vehicule (immatriculation, puissance, marque, place, id_type, id_uti
 -- facture 
 INSERT INTO facture (date_debut, date_fin, police_assurance, id_assureur, id_vehicule) VALUES 
 ('2023-01-01', '2024-01-01', 'PA000001', 1, 4),
-('2023-01-01', '2024-01-01', 'PA000001', 1, 1),
+('2023-01-01', '2024-01-01', 'PA000001', 1, 2),
+('2023-01-01', '2024-01-01', 'PA000001', 1, 3),
+('2023-01-01', '2024-01-01', 'PA000001', 1, 3),
 ('2023-01-02', '2024-01-02', 'PA000002', 2, 2),
 ('2023-01-03', '2024-01-03', 'PA000003', 3, 3),
 ('2023-01-11', '2024-01-11', 'PA000011', 1, 1),
