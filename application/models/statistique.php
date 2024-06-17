@@ -14,16 +14,14 @@ class statistique extends CI_Model {
 
     public function get_frequence_payement($mois, $annee) {
         $query = "SELECT 
-                    EXTRACT(YEAR FROM f.date_debut) AS annee, 
-                    EXTRACT(MONTH FROM f.date_debut) AS mois, 
-                    COUNT(*) AS nombre_paiements 
-                FROM facture f 
-                WHERE f.deleted = FALSE 
-                AND EXTRACT(YEAR FROM f.date_debut) = ? 
-                AND EXTRACT(MONTH FROM f.date_debut) = ? 
-                GROUP BY annee, mois 
-                ORDER BY annee, mois";
-
+                    p.frequence, 
+                    COUNT(DISTINCT p.id_utilisateur) AS nombre_utilisateurs
+                FROM payement p
+                WHERE EXTRACT(YEAR FROM p.date_payement) = ?
+                AND EXTRACT(MONTH FROM p.date_payement) = ?
+                GROUP BY p.frequence
+                ORDER BY p.frequence";
+    
         $result = $this->db->query($query, array($annee, $mois));
         return $result->result_array();
     }
