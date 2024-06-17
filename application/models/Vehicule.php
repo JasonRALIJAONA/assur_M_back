@@ -2,32 +2,33 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vehicule extends CI_Model {
-    /*
-    format de $data :
-        $data = array(
-            'immatriculation' => 'XX-XXXX-XX',
-            'puissance' => 150,
-            'marque' => 'BMW',
-            autre colonne ...
-        );
-    */
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->database();
+    }
+
     public function get_all() {
-        $query = $this->db->get('vehicule');
-        return $query->result_array();
+        return $this->db->get('vehicule')->result_array();
+    }
+
+    public function get_by_id($id) {
+        return $this->db->get_where('vehicule', array('id' => $id))->row_array();
     }
 
     public function insert($data) {
-        return $this->db->insert('vehicule', $data);
+        $this->db->insert('vehicule', $data);
+        return $this->db->insert_id();
     }
 
     public function update($id, $data) {
         $this->db->where('id', $id);
-        return $this->db->update('vehicule', $data);
+        $this->db->update('vehicule', $data);
     }
-    
+
     public function delete($id) {
         $this->db->where('id', $id);
-        return $this->db->delete('vehicule');
+        $this->db->delete('vehicule');
     }
 }
-            
+?>
