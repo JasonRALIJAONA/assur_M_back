@@ -11,7 +11,8 @@
         
         public function index() {
             $data['operateurs'] = $this->Operateur->get_all();
-            $this->load->view('page/operateur', $data);
+            $data['contents'] = 'page/operateur';
+            $this->load->view('templates/template', $data);
         } 
     }
 ?>

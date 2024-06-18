@@ -1,8 +1,3 @@
-<?php var_dump($statistiques); ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,19 +41,39 @@
             }
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
-        #chartContainer {
-            width: 70%;
-            margin: auto;
+
+        .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            margin: 0 4px;
+            border: 1px solid #ddd;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
         }
     </style>
+
+<style>
+        
+    </style>
 </head>
+
 <body>
-    <div class="container-scroller">
+    
         <!-- Navbar -->
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -127,102 +142,4 @@
                     </ul>
                 </div>
             </div>
-            <!-- partial -->
-            <!-- Sidebar -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item nav-category">Crud</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('login/accueil');?>">
-                            <i class="menu-icon mdi mdi-account-multiple"></i>
-                            <span class="menu-title">Utilisateur</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('vehicule/index'); ?>">
-                            <i class="menu-icon mdi mdi-car"></i>
-                            <span class="menu-title">Vehicule</span>
-                        </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#" >
-                            <i class="menu-icon mdi mdi-car"></i>
-                            <span class="menu-title">Type de Vehicule</span>
-                        </a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('assureur/index'); ?>">
-                            <i class="menu-icon mdi mdi-security"></i>
-                            <span class="menu-title">Assureur</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('facture/index'); ?>" >
-                            <i class="menu-icon mdi mdi-clipboard-text"></i>
-                            <span class="menu-title">Facture</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('operateur/index'); ?>">
-                            <i class="menu-icon mdi mdi-sim"></i>
-                            <span class="menu-title">Operateur</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Statistique</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="menu-icon mdi mdi-file-document"></i>
-                            <span class="menu-title">Assurance le plus utilise</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" >
-                            <i class="menu-icon mdi mdi-elevation-rise"></i>
-                            <span class="menu-title">Frequence de paiment</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item nav-category">Autres</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" >
-                        <i class="menu-icon mdi mdi-headphones"></i>
-                        <span class="menu-title">Service Client</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- partial -->
-            <!-- Content -->
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <!-- Table and form go here -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h1>Assurance les plus Utilisee</h1>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <!-- content-wrapper ends -->
-                <!-- Footer -->
-                <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright over here</span>
-                    </div>
-                </footer>
-                <!-- partial -->
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-
-
-</body>
-</html>
+            <div></div>

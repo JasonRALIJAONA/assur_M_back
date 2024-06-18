@@ -30,5 +30,15 @@ class Vehicule extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('vehicule');
     }
+
+    public function get_count() {
+        return $this->db->count_all('vehicule');
+    }
+
+    public function get_vehicules($limit, $offset) {
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('vehicule');
+        return $query->result_array();
+    }
 }
 ?>

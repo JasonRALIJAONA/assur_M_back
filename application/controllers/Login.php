@@ -24,7 +24,6 @@ class Login extends CI_Controller {
         } else {
             redirect('login/accueil');
         }
-        
     }
 
     public function accueil() {
@@ -37,14 +36,19 @@ class Login extends CI_Controller {
         } elseif ($this->input->post('action') == 'enregistrer') {
             $id = $this->input->post('id');
             $update_data = array(
+                'nom' => $this->input->post('nom'),
+                'prenom' => $this->input->post('prenom'),
+                'adresse' => $this->input->post('adresse'),
+                'naissance' => $this->input->post('naissance'),
                 'email' => $this->input->post('email'),
-                'mdp' => $this->input->post('mdp')
+                'telephone' => $this->input->post('telephone')
             );
             $this->Utilisateur->update($id, $update_data);
             redirect('login/accueil');
         }
 
-        $this->load->view('page/accueil', $data);
+        $data['contents'] = 'page/accueil';
+        $this->load->view('templates/template', $data);
     }
 
     public function supprimer($id) {

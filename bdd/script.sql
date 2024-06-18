@@ -1,3 +1,20 @@
+SELECT u.nom AS nom_utilisateur,
+       v.immatriculation,
+       f.police_assurance,
+       af.debut AS annee_fabrication_debut,
+       af.fin AS annee_fabrication_fin
+FROM utilisateur u
+JOIN vehicule v ON u.id = v.id_utilisateur
+JOIN facture f ON v.id = f.id_vehicule
+JOIN annee_fabrication af ON v.id = f.id_vehicule
+WHERE (u.nom ILIKE '%Dupont%'
+       OR v.immatriculation ILIKE '%123ABC%'
+       OR f.police_assurance ILIKE '%PA000001%'
+       OR (af.debut <= 2023 AND af.fin >= 2023))
+AND NOT u.deleted;
+ -- Pour exclure les utilisateurs supprimés, si nécessaire
+
+
 DROP database assur_m;
 CREATE database assur_m;
 
