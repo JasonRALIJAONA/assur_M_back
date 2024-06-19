@@ -10,8 +10,8 @@ class statistique extends CI_Model {
         JOIN assureur a ON f.id_assureur = a.id
         JOIN vehicule v ON f.id_vehicule = v.id
         JOIN utilisateur u ON v.id_utilisateur = u.id
-        WHERE EXTRACT(YEAR FROM f.date_debut) = 2023
-        AND EXTRACT(MONTH FROM f.date_debut) = 1
+        WHERE EXTRACT(YEAR FROM f.date_debut) = ?
+        AND EXTRACT(MONTH FROM f.date_debut) = ?
         GROUP BY a.nom, f.id_assureur
         ORDER BY a.nom, f.id_assureur";
 
