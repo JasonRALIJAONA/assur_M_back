@@ -2,7 +2,30 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class statistique extends CI_Model {
+    public function get_stat_assurance_par_semaine($id_assureur, $mois, $annee) {
+        $query = "WITH weekly_usage AS (
+            SELECT DATE_TRUNC('week', f.date_debut) AS week,
+            COUNT(DISTINCT u.id) AS user_count 
+            FROM facture f 
+            JOIN vehicule v ON f.id_vehicule = v.id 
+            JOIN utilisateur u ON v.id_utilisateur = u.id 
+            WHERE f.id_assureur = ? 
+            AND EXTRACT(YEAR FROM f.date_debut) = ? 
+            AND EXTRACT(MONTH FROM f.date_debut) = ? 
+            GROUP BY week 
+        ),
+        filtered_weeks AS (
+            SELECT week, user_count 
+            FROM weekly_usage 
+            WHERE EXTRACT(MONTH FROM week) = ? 
+            AND EXTRACT(YEAR FROM week) = ?  
+        ) SELECT week, user_count FROM filtered_weeks ORDER BY week";
     
+        $bindings = array($id_assureur, $annee, $mois, $mois, $annee);
+        $query = $this->db->query($query, $bindings);
+        return $query->result_array();
+    }
+
     public function get_assurance_plus_utilise($mois, $annee) {
         $query = "SELECT f.id_assureur, a.nom, 
         COUNT(DISTINCT v.id_utilisateur) AS nombre_utilisateurs
