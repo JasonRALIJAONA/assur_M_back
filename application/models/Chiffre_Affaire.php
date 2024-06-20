@@ -5,7 +5,7 @@ class Chiffre_Affaire extends CI_Model {
     // Chiffre d'affaire d'UNE assurance
     public function get_daily_chiffre_affaire($id_assureur, $debut, $fin) {
         $query = "SELECT a.nom, p.date_payement,
-        SUM(p.valeur) AS chiffre_affaire
+        SUM(p.valeur*(100-a.commission)/100) AS chiffre_affaire
         FROM payement p
         JOIN vehicule v ON p.id_vehicule = v.id
         JOIN assureur a ON v.id_assureur = a.id
@@ -19,7 +19,7 @@ class Chiffre_Affaire extends CI_Model {
     }
 
     public function get_chiffre_affaire($id_assureur, $debut, $fin) {
-        $query = "SELECT a.nom, SUM(p.valeur) AS chiffre_affaire
+        $query = "SELECT a.nom, SUM(p.valeur*(100-a.commission)/100) AS chiffre_affaire
         FROM assureur a
         JOIN vehicule v ON v.id_assureur = a.id
         JOIN payement p ON p.id_vehicule = v.id
@@ -35,7 +35,7 @@ class Chiffre_Affaire extends CI_Model {
     // Par  assurance
     public function get_daily_chiffre_affaire_par_assurance($debut, $fin) {
         $query = "SELECT a.nom, p.date_payement,
-        SUM(p.valeur) AS chiffre_affaire
+        SUM(p.valeur*a.commission/100) AS chiffre_affaire
         FROM payement p
         JOIN vehicule v ON p.id_vehicule = v.id
         JOIN assureur a ON v.id_assureur = a.id
@@ -49,7 +49,7 @@ class Chiffre_Affaire extends CI_Model {
     
     public function get_chiffre_affaire_par_assurance($debut, $fin) {
         $query = "SELECT a.nom AS assureur,
-        SUM(p.valeur) AS chiffre_affaire
+        SUM(p.valeur*a.commission/100) AS chiffre_affaire
         FROM payement p
         JOIN vehicule v ON p.id_vehicule = v.id
         JOIN assureur a ON v.id_assureur = a.id
