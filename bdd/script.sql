@@ -422,6 +422,13 @@ INSERT INTO payement (date_payement, valeur, frequence, id_vehicule, id_utilisat
 ('2025-07-15', 500.00, 1, 6, 1),
 ('2025-08-15', 500.00, 1, 6, 1),
 ('2025-09-15', 500.00, 1, 6, 1);
+INSERT INTO payement (date_payement, valeur, frequence, id_vehicule, id_utilisateur) VALUES
+('2023-01-01', 500.00, 1, 5, 1),
+('2023-01-16', 500.00, 1, 5, 1),
+('2023-01-18', 500.00, 1, 5, 1),
+('2023-01-12', 500.00, 1, 5, 1),
+('2023-01-05', 500.00, 1, 5, 1),
+('2023-01-26', 500.00, 1, 5, 1);
 
 
 SELECT 
