@@ -31,4 +31,22 @@ class statistique extends CI_Model {
         $result = $this->db->query($query, array($annee, $mois));
         return $result->result_array();
     }
+
+    public function get_frequence_payement_by_frequence($annee, $mois, $frequence) {
+        $query = "SELECT 
+                    a.nom,
+                    p.frequence, 
+                    COUNT(DISTINCT p.id_utilisateur) AS nombre_utilisateurs
+                FROM payement p
+                JOIN vehicule v ON p.id_vehicule = v.id
+                JOIN assureur a ON v.id_assureur = a.id
+                WHERE EXTRACT(YEAR FROM p.date_payement) = ?
+                AND EXTRACT(MONTH FROM p.date_payement) = ?
+                AND p.frequence = ?
+                GROUP BY p.frequence,a.nom
+                ORDER BY p.frequence";
+    
+        $result = $this->db->query($query, array($annee, $mois, $frequence));
+        return $result->result_array();
+    }
 }

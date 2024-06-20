@@ -20,9 +20,15 @@ class Login extends CI_Controller {
 
         if ($reponse == 0) {
             $data['error'] = "Identifiants incorrects";
-            $this->load->view("page/login", $data);
+            $this->load->view("page/login", $data); // page login
         } else {
-            redirect('login/accueil');
+            redirect('login/accueil'); // page accueil    
+                // if ($this->Utilisateur->is_admin($reponse)) {
+                //     redirect('login/accueil');
+                // } else {
+                //     $data['error'] = "Vous n'avez pas les droits d'administrateur";
+                //     $this->load->view("page/login", $data);
+                // }        
         }
     }
 
@@ -36,12 +42,7 @@ class Login extends CI_Controller {
         } elseif ($this->input->post('action') == 'enregistrer') {
             $id = $this->input->post('id');
             $update_data = array(
-                'nom' => $this->input->post('nom'),
-                'prenom' => $this->input->post('prenom'),
-                'adresse' => $this->input->post('adresse'),
-                'naissance' => $this->input->post('naissance'),
                 'email' => $this->input->post('email'),
-                'telephone' => $this->input->post('telephone')
             );
             $this->Utilisateur->update($id, $update_data);
             redirect('login/accueil');

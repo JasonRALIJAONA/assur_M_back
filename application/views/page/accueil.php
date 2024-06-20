@@ -44,34 +44,16 @@
                                     </table>
                                 </div>
                                 <div id="editFormContainer" class="form-container hidden">
-                                    <h2>Modifier Utilisateur</h2>
+                                    <h2>Modifier Mail Utilisateur</h2>
                                     <form action="<?php echo site_url('login/accueil'); ?>" method="post" >
                                         <input type="hidden" id="editFormId" name="id">
                                         <input type="hidden" name="action" value="enregistrer">
-                                        <div class="form-group">
-                                            <label for="editFormNom">Nom:</label>
-                                            <input type="text" id="editFormNom" name="nom" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="editFormPrenom">Prenom:</label>
-                                            <input type="text" id="editFormPrenom" name="prenom" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="editFormAdresse">Adresse:</label>
-                                            <input type="text" id="editFormAdresse" name="adresse" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="editFormNaissance">Naissance:</label>
-                                            <input type="text" id="editFormNaissance" name="naissance" class="form-control">
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="editFormEmail">Email:</label>
                                             <input type="text" id="editFormEmail" name="email" class="form-control">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="editFormTelephone">Telephone:</label>
-                                            <input type="text" id="editFormTelephone" name="telephone" class="form-control">
-                                        </div>
+                                        
                                          
                                         <button type="submit" class="btn btn-success">Enregistrer</button>
                                         <button type="button" class="btn btn-secondary" onclick="hideEditForm()">Annuler</button>
@@ -94,13 +76,7 @@
 <script>
     function showEditForm(id, email, nom, prenom, adresse, naissance, telephone) {
     document.getElementById('editFormId').value = id;
-    document.getElementById('editFormNom').value = nom;
-    document.getElementById('editFormPrenom').value = prenom;
-    document.getElementById('editFormAdresse').value = adresse;
-    document.getElementById('editFormNaissance').value = naissance;
     document.getElementById('editFormEmail').value = email;
-    document.getElementById('editFormTelephone').value = telephone;
-
     document.getElementById('editFormContainer').classList.remove('hidden');
 }
 

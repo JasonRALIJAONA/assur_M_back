@@ -75,9 +75,9 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" id="mdp" name="mdp" placeholder="Password">
                                 </div>
-                                <!-- <?php if (isset($error)): ?>
+                                <?php if (isset($error)): ?>
                                     <p style="color: red;"><?php echo $error; ?></p>
-                                <?php endif; ?> -->
+                                <?php endif; ?>
                                 <div class="mt-3">
                                     <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="LOG IN">
                                 </div>

@@ -3,4 +3,4 @@
     $this->load->view('templates/sidebar');
     $this->load->view($contents);
     $this->load->view('templates/footer');
-?>
+?>  

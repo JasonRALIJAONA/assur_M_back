@@ -67,9 +67,6 @@
         }
     </style>
 
-<style>
-        
-    </style>
 </head>
 
 <body>
@@ -87,7 +84,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">La page accueil <span class="text-black fw-bold">Administrateur</span></h1>
+                        <h1 class="welcome-text">La page de l' <span class="text-black fw-bold">Administrateur</span></h1>
                         <h3 class="welcome-sub-text">Tout pour satisfaire le client</h3>
                     </li>
                 </ul>
