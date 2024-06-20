@@ -1,18 +1,38 @@
+-- Options plus utilisé
+SELECT o.nom, COUNT(*) AS usage
+FROM payement p
+JOIN vehicule v ON p.id_vehicule = v.id
+JOIN options o ON v.id_options = o.id
+WHERE p.date_payement BETWEEN '2023-01-01' AND '2025-12-31'
+GROUP BY o.nom
+ORDER BY usage DESC;
+
+
+
+-- Frequence de paiement
+SELECT EXTRACT(YEAR FROM f.date_debut) AS annee, 
+EXTRACT(MONTH FROM f.date_debut) AS mois, 
+COUNT(*) AS nombre_paiements 
+FROM facture f 
+WHERE f.date_debut BETWEEN '2023-01-01' AND '2025-01-01'
+GROUP BY annee, mois 
+ORDER BY annee, mois
+
 -- Assurance par semaine
 WITH weekly_usage AS (
-            SELECT DATE_TRUNC('week', f.date_debut) AS week, 
-            COUNT(DISTINCT u.id) AS user_count  
-            FROM facture f 
-            JOIN vehicule v ON f.id_vehicule = v.id 
-            JOIN utilisateur u ON v.id_utilisateur = u.id 
-            WHERE f.id_assureur = 1
-            AND f.date_debut BETWEEN '2023-01-01' AND '2025-01-01'
-            GROUP BY week 
-        ),
-        filtered_weeks AS (
-            SELECT week, user_count 
-            FROM weekly_usage 
-        ) SELECT week, user_count FROM filtered_weeks ORDER BY week
+    SELECT DATE_TRUNC('week', f.date_debut) AS week, 
+    COUNT(DISTINCT u.id) AS user_count  
+    FROM facture f 
+    JOIN vehicule v ON f.id_vehicule = v.id 
+    JOIN utilisateur u ON v.id_utilisateur = u.id 
+    WHERE f.id_assureur = 1
+    AND f.date_debut BETWEEN '2023-01-01' AND '2025-01-01'
+    GROUP BY week 
+),
+filtered_weeks AS (
+    SELECT week, user_count 
+    FROM weekly_usage 
+) SELECT week, user_count FROM filtered_weeks ORDER BY week
 
 
 SELECT f.id_assureur, a.nom, 
