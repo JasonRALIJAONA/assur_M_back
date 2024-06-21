@@ -1,3 +1,4 @@
+\c postgres;
 DROP database assur_m;
 CREATE database assur_m;
 
@@ -12,7 +13,7 @@ CREATE TABLE operateur(
 CREATE TABLE assureur(
    id SERIAL,
    nom VARCHAR(50) ,
-   commission NUMERIC(7,2)  ,
+   commission NUMERIC(7,2),
    num_telma VARCHAR(20) ,
    num_orange VARCHAR(20) ,
    num_airtel VARCHAR(20) ,
@@ -162,10 +163,10 @@ INSERT INTO operateur (nom) VALUES
 ('Airtel');
 
 -- assureur
-INSERT INTO assureur (nom, num_telma, num_orange, num_airtel) VALUES
-('Mama', '0343522562', ' 0320322555', ''),
-('Ny Havana', '0340722031', '', ''),
-('Aro', '0341422525', '', '');
+INSERT INTO assureur (nom, commission, num_telma, num_orange, num_airtel) VALUES
+('Mama', 4.80, '0343522562', ' 0320322555', ''),
+('Ny Havana', 5.50, '0340722031', '', ''),
+('Aro', 6.75, '0341422525', '', '');
 
 -- utilisateur
 INSERT INTO utilisateur (nom, prenom, adresse, naissance, email, mdp, telephone, deleted, id_operateur, solde) VALUES 
