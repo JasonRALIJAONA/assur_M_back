@@ -14,6 +14,5 @@ class assureurCtrl extends CI_Controller {
         $data['contents'] = 'page/assureur';
         $this->load->view('templates/template', $data);
     }
-
 }
 ?>
