@@ -70,14 +70,19 @@
 
                             <form class="pt-3" action="<?php echo site_url('login/seconnecter'); ?> " method="post">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" name="mail" id="identifiant" placeholder="Email">
+                                    <input type="email" class="form-control form-control-lg" name="mail" id="identifiant" placeholder="Email" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="mdp" name="mdp" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg" id="mdp" name="mdp" placeholder="Password" value="">
                                 </div>
-                                <!-- <?php if (isset($error)): ?>
-                                    <p style="color: red;"><?php echo $error; ?></p>
-                                <?php endif; ?> -->
+
+                                    <?php if (isset($error)): ?>
+                                        <p style="color: red;"><?php echo $error; ?></p>
+                                    <?php endif; ?>
+                                    <?php if (isset($valid)): ?>
+                                        <p style="color: green;"><?php echo $valid; ?></p>
+                                    <?php endif; ?>
+
                                 <div class="mt-3">
                                     <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="LOG IN">
                                 </div>

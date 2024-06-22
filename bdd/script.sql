@@ -1,6 +1,5 @@
 DROP database assur_m;
 CREATE database assur_m;
-
 \c assur_m;
 
 CREATE TABLE operateur(
@@ -29,6 +28,7 @@ CREATE TABLE utilisateur(
    mdp VARCHAR(50)  NOT NULL,
    telephone VARCHAR(20)  NOT NULL,
    deleted BOOLEAN DEFAULT FALSE NOT NULL,
+   admin BOOLEAN DEFAULT FALSE NOT NULL, -- ajout nouveau colonne
    id_operateur INT,
    solde DECIMAL(12,2),
    FOREIGN KEY(id_operateur) REFERENCES operateur(id),
@@ -61,9 +61,6 @@ CREATE TABLE vehicule(
    id_utilisateur INTEGER NOT NULL,
    id_assureur INTEGER,
    id_options INTEGER,
-   carburant VARCHAR(50) ,
-   utilisation VARCHAR(100) ,
-
    PRIMARY KEY(id),
    FOREIGN KEY(id_type) REFERENCES type_vehicule(id),
    FOREIGN KEY(id_options) REFERENCES options(id),
@@ -169,17 +166,17 @@ INSERT INTO assureur (nom, num_telma, num_orange, num_airtel) VALUES
 ('Aro', '0341422525', '', '');
 
 -- utilisateur
-INSERT INTO utilisateur (nom, prenom, adresse, naissance, email, mdp, telephone, deleted, id_operateur, solde) VALUES 
-('Dupont', 'Jean', '123 Rue de la Paix, Paris', '1980-01-15', 'jean.dupont@example.com', 'mdp123', '0331234567', FALSE, 3, 0),
-('Martin', 'Claire', '456 Avenue des Champs, Lyon', '1992-07-22', 'claire.martin@example.com', 'mdp456', '0342345678', FALSE, 1, 0),
-('Bernard', 'Luc', '789 Boulevard du Soleil, Marseille', '1985-05-30', 'luc.bernard@example.com', 'mdp789', '0323456789', FALSE, 2, 0),
-('Durand', 'Sophie', '101 Rue des Fleurs, Toulouse', '1990-12-10', 'sophie.durand@example.com', 'mdp101', '0341567890', FALSE, 1, 0),
-('Lefevre', 'Paul', '202 Chemin de la Plage, Nice', '1975-03-25', 'paul.lefevre@example.com', 'mdp202', '0325678901', FALSE, 2, 0),
-('Rousseau', 'Marie', '303 Rue de Eglise, Bordeaux', '1988-08-08', 'marie.rousseau@example.com', 'mdp303', '0326789012', FALSE, 2, 0),
-('Moreau', 'Antoine', '404 Rue de la Republique, Lille', '1995-11-19', 'antoine.moreau@example.com', 'mdp404', '0347890123', FALSE, 1, 0),
-('Petit', 'Julie', '505 Rue de la Liberté, Nantes', '1982-09-14', 'julie.petit@example.com', 'mdp505', '0338901234', FALSE, 3, 0),
-('Richard', 'Marc', '606 Rue des Ecoles, Strasbourg', '1983-06-22', 'marc.richard@example.com', 'mdp606', '0349012345', FALSE, 1, 0),
-('Garcia', 'Emma', '707 Rue du Moulin, Montpellier', '1991-04-10', 'emma.garcia@example.com', 'mdp707', '0330123456', FALSE, 3, 0);
+INSERT INTO utilisateur (nom, prenom, adresse, naissance, email, mdp, telephone, deleted,admin, id_operateur, solde) VALUES 
+('Dupont', 'Jean', '123 Rue de la Paix, Paris', '1980-01-15', 'jean.dupont@example.com', 'mdp123', '0331234567', FALSE,TRUE, 3, 0),
+('Martin', 'Claire', '456 Avenue des Champs, Lyon', '1992-07-22', 'claire.martin@example.com', 'mdp456', '0342345678', FALSE,TRUE, 1, 0),
+('Bernard', 'Luc', '789 Boulevard du Soleil, Marseille', '1985-05-30', 'luc.bernard@example.com', 'mdp789', '0323456789', FALSE,FALSE, 2, 0),
+('Durand', 'Sophie', '101 Rue des Fleurs, Toulouse', '1990-12-10', 'sophie.durand@example.com', 'mdp101', '0341567890', FALSE,FALSE, 1, 0),
+('Lefevre', 'Paul', '202 Chemin de la Plage, Nice', '1975-03-25', 'paul.lefevre@example.com', 'mdp202', '0325678901', FALSE,TRUE, 2, 0),
+('Rousseau', 'Marie', '303 Rue de Eglise, Bordeaux', '1988-08-08', 'marie.rousseau@example.com', 'mdp303', '0326789012', FALSE,FALSE, 2, 0),
+('Moreau', 'Antoine', '404 Rue de la Republique, Lille', '1995-11-19', 'antoine.moreau@example.com', 'mdp404', '0347890123', FALSE,FALSE, 1, 0),
+('Petit', 'Julie', '505 Rue de la Liberté, Nantes', '1982-09-14', 'julie.petit@example.com', 'mdp505', '0338901234', FALSE,FALSE, 3, 0),
+('Richard', 'Marc', '606 Rue des Ecoles, Strasbourg', '1983-06-22', 'marc.richard@example.com', 'mdp606', '0349012345', FALSE,TRUE, 1, 0),
+('Garcia', 'Emma', '707 Rue du Moulin, Montpellier', '1991-04-10', 'emma.garcia@example.com', 'mdp707', '0330123456', FALSE,TRUE, 3, 0);
 
 -- type_vehicule
 INSERT INTO type_vehicule (nom) VALUES 
@@ -353,3 +350,5 @@ INSERT INTO payement (date_payement, valeur, frequence, id_vehicule, id_utilisat
 ('2025-07-15', 500.00, 1, 1, 1),
 ('2025-08-15', 500.00, 1, 1, 1),
 ('2025-09-15', 500.00, 1, 1, 1);
+
+

@@ -11,7 +11,6 @@ class ServiceClientController extends CI_Controller {
     public function messages($id_utilisateur) {
         $data['messages'] = $this->service_client->get_message($id_utilisateur);
         $data['id_utilisateur'] = $id_utilisateur;
-        // $this->load->view('service_client/messages', $data);
     }
 
     public function store_message($id_utilisateur) {
@@ -24,7 +23,6 @@ class ServiceClientController extends CI_Controller {
         );
         
         $this->service_client->insert($data);
-        // redirect('ServiceClientController/messages/' . $id_utilisateur);
     }
 }
 ?>

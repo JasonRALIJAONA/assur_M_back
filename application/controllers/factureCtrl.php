@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class factureCtrl extends CI_Controller {
+class FactureCtrl extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -9,9 +9,17 @@ class factureCtrl extends CI_Controller {
         $this->load->helper('url');
     }
 
-    public function index() {
-        $data['factures'] = $this->Facture->get_all();
-        $this->load->view('page/facture', $data);
+    public function index($page = 1) {
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
+        
+        $total_factures = $this->Facture->get_count();
+
+        $data['factures'] = $this->Facture->get_factures($limit, $offset);
+        $data['total_pages'] = ceil($total_factures / $limit);
+        $data['current_page'] = $page;
+        $data['contents'] = 'page/facture';
+        $this->load->view('templates/template', $data);
     }
 
     public function ajouter() {

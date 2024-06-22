@@ -41,4 +41,10 @@ class Utilisateur extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->update('utilisateur', array('deleted' => TRUE));
     }
+
+    public function is_admin($id) {
+        $query = $this->db->select('admin')->get_where('utilisateur', array('id' => $id));
+        $result = $query->row_array();
+        return isset($result['admin']) ? (bool) $result['admin'] : FALSE;
+    }
 }

@@ -11,7 +11,8 @@ class assureurCtrl extends CI_Controller {
 
     public function index() {
         $data['assureurs'] = $this->Assureur->get_all();
-        $this->load->view('page/assureur', $data);
+        $data['contents'] = 'page/assureur';
+        $this->load->view('templates/template', $data);
     }
 
 }
