@@ -34,7 +34,14 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
 
-        <li class="nav-item nav-category">Search</li>
+        <li class="nav-item nav-category"></li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" >
+                <i class="menu-icon mdi mdi-home"></i>
+                <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+        
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('rechercheCtrl/index'); ?>" >
                 <i class="menu-icon mdi mdi-magnify"></i>
@@ -73,6 +80,7 @@
                     <span class="menu-title">Operateur</span>
                 </a>
             </li>
+            
             <li class="nav-item nav-category">Statistique</li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('statistiqueCtrl/index'); ?>">
@@ -87,14 +95,6 @@
                 </a>
             </li>
 
-            <li class="nav-item nav-category">Affaire</li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="#" >
-                <i class="menu-icon mdi mdi-finance"></i>
-                <span class="menu-title">Chiffre d'Affaire</span>
-                </a>
-            </li>
         </ul>
     </nav>
 

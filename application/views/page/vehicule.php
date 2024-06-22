@@ -25,6 +25,7 @@
                                             <th>Puissance</th>
                                             <th>Marque</th>
                                             <th>Places</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -35,6 +36,12 @@
                                             <td><?php echo $vehicule['puissance']; ?> cv</td>
                                             <td><?php echo $vehicule['marque']; ?></td>
                                             <td><?php echo $vehicule['place']; ?></td>
+                                            <td>
+                                                <form action="#" method="post" style="display:inline;" >
+                                                    <input type="submit" value="Modifier" class="btn btn-primary btn-sm">
+                                                </form>
+                                                <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>

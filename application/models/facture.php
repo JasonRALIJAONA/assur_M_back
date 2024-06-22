@@ -25,6 +25,16 @@ class Facture extends CI_Model {
     public function get_count() {
         return $this->db->count_all('facture');
     }
+    
+    public function update($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update('utilisateur', $data);
+    }
+    
+    public function delete($id) {
+        $this->db->where('id', $id);
+        return $this->db->update('utilisateur', array('deleted' => TRUE));
+    }
 
     public function get_factures($limit, $offset) {
         $this->db->limit($limit, $offset);

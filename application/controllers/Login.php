@@ -19,16 +19,21 @@ class Login extends CI_Controller {
         $reponse = $this->Utilisateur->log($mail, $mdp);
 
         if ($reponse == 0) {
-            $data['error'] = "Identifiants incorrects";
+            $data['error'] = "Identifiants incorrects ou mot de passe incorecte";
             $this->load->view("page/login", $data); // page login
         } else {
-            redirect('login/accueil'); // page accueil    
-                // if ($this->Utilisateur->is_admin($reponse)) {
-                //     redirect('login/accueil');
-                // } else {
-                //     $data['error'] = "Vous n'avez pas les droits d'administrateur";
-                //     $this->load->view("page/login", $data);
-                // }        
+            // redirect('login/accueil'); // page accueil    
+            echo ("Tafiditra ato @ condition");
+                if ($this->Utilisateur->is_admin($reponse)) {
+                    redirect('login/accueil');
+                    echo ("IF");
+                    $data['valid'] = "Vous avez les droits d'administrateur";
+                    $this->load->view("page/login", $data);
+                } else {
+                    echo ("ELSE");
+                    $data['error'] = "Vous n'avez pas les droits d'administrateur";
+                    $this->load->view("page/login", $data);
+                }        
         }
     }
 

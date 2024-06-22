@@ -22,4 +22,6 @@ class RechercheCtrl extends CI_Controller {
 
         $this->load->view('page/recherche', array('results' => $results));
     }
+
+    
 }

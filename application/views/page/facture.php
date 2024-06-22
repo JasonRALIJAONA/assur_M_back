@@ -17,6 +17,7 @@
                                                     <th>Police d'assurance</th>
                                                     <th>ID de l'assureur</th>
                                                     <th>ID du véhicule</th>
+                                                    <th>Actions</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -29,7 +30,12 @@
                                                     <td><?php echo $facture['police_assurance']; ?></td>
                                                     <td><?php echo $facture['id_assureur']; ?></td>
                                                     <td><?php echo $facture['id_vehicule']; ?></td>
-                                                    
+                                                    <td>
+                                                        <form action="#" method="post" style="display:inline;" >
+                                                            <input type="submit" value="Modifier" class="btn btn-primary btn-sm">
+                                                        </form>
+                                                        <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                                                    </td>
                                                 </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

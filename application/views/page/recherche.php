@@ -183,8 +183,15 @@
     
         <ul class="nav">
 
-        <li class="nav-item nav-category">Search</li>
+        <li class="nav-item nav-category"></li>
             <li class="nav-item">
+                <a class="nav-link" href="#" >
+                <i class="menu-icon mdi mdi-home"></i>
+                <span class="menu-title">Dashboard</span>
+                </a>
+        </li>
+        
+        <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('rechercheCtrl/index'); ?>" >
                 <i class="menu-icon mdi mdi-magnify"></i>
                 <span class="menu-title">Recherche</span>
@@ -236,13 +243,6 @@
                 </a>
             </li>
 
-            <li class="nav-item nav-category">Affaire</li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="menu-icon mdi mdi-finance"></i>
-                    <span class="menu-title">Chiffre d'Affaire</span>
-                </a>
-            </li>
 
         </ul>
     </nav>
@@ -269,15 +269,17 @@
                                 <label for="police_assurance">Police d'assurance:</label>
                                 <input type="text" id="police_assurance" name="police_assurance" class="form-control" value="<?php echo isset($_POST['police_assurance']) ? $_POST['police_assurance'] : ''; ?>">
                             </div>
-                            <div class="form-group">
-                                <label for="annee">Année:</label>
-                                <select id="annee" name="annee" class="form-control">
-                                    <option value=""></option>
-                                    <?php for ($year = date('Y'); $year >= 2023; $year--): ?>
-                                    <option value="<?php echo $year; ?>" <?php echo (isset($_POST['annee']) && $_POST['annee'] == $year) ? 'selected' : ''; ?>><?php echo $year; ?></option>
-                                    <?php endfor; ?>
-                                </select>
+                            <div class="form-row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="date_debut" class="form-label">Entre Date :</label>
+                                    <input type="date" id="date_debut" name="date_debut" class="form-control" value="<?php echo isset($_POST['date_debut']) ? $_POST['date_debut'] : ''; ?>">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="date_fin" class="form-label"> et Date  :</label>
+                                    <input type="date" id="date_fin" name="date_fin" class="form-control" value="<?php echo isset($_POST['date_fin']) ? $_POST['date_fin'] : ''; ?>">
+                                </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="numero_immatriculation">Numéro d'immatriculation:</label>
                                 <input type="text" id="numero_immatriculation" name="numero_immatriculation" class="form-control" value="<?php echo isset($_POST['numero_immatriculation']) ? $_POST['numero_immatriculation'] : ''; ?>">

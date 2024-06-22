@@ -21,6 +21,7 @@
                                                     <th>Numero Telma</th>
                                                     <th>Numero Orange</th>
                                                     <th>Numero Airtel</th>
+                                                    <th>Actions</th>
                                                 
                                                 </tr>
                                             </thead>
@@ -33,6 +34,12 @@
                                                     <td><?php echo $assureur['num_telma']; ?></td>
                                                     <td><?php echo $assureur['num_orange']; ?></td>
                                                     <td><?php echo $assureur['num_airtel']; ?></td>
+                                                    <td>
+                                                        <form action="#" method="post" style="display:inline;" >
+                                                            <input type="submit" value="Modifier" class="btn btn-primary btn-sm">
+                                                        </form>
+                                                        <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                                                    </td>
                                                     
                                                 </tr>
                                                 <?php endforeach; ?>

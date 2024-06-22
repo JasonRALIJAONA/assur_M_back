@@ -5,12 +5,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Liste des Administrateurs</h4>
+                                <h4 class="card-title">Liste des Utilisateurs</h4>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
-                                            <tr>
-                                                <!-- <th>ID</th> -->
+                                            <tr>                                  
                                                 <th>Nom</th>
                                                 <th>Prenom</th>
                                                 <th>Adresse</th>
@@ -24,7 +23,7 @@
                                         <tbody>
                                             <?php foreach ($utilisateurs as $utilisateur): ?>
                                             <tr>
-                                                <!-- <td><?php echo $utilisateur['id']; ?></td> -->
+                                                
                                                 <td><?php echo $utilisateur['nom']; ?></td>
                                                 <td><?php echo $utilisateur['prenom']; ?></td>
                                                 <td><?php echo $utilisateur['adresse']; ?></td>
@@ -73,8 +72,10 @@
     <!-- page-body-wrapper ends -->
 </div>
 
+
 <script>
-    function showEditForm(id, email, nom, prenom, adresse, naissance, telephone) {
+
+function showEditForm(id, email, nom, prenom, adresse, naissance, telephone) {
     document.getElementById('editFormId').value = id;
     document.getElementById('editFormEmail').value = email;
     document.getElementById('editFormContainer').classList.remove('hidden');

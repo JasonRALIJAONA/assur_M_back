@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <p>Afaka asina zavatra hafa</p>
+                        <p>ADMIN</p>
                     </li>
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
