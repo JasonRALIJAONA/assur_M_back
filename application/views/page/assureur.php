@@ -21,7 +21,7 @@
                                                     <th>Numero Telma</th>
                                                     <th>Numero Orange</th>
                                                     <th>Numero Airtel</th>
-                                                    <th>Actions</th>
+                                                    <th></th>
                                                 
                                                 </tr>
                                             </thead>
@@ -35,10 +35,8 @@
                                                     <td><?php echo $assureur['num_orange']; ?></td>
                                                     <td><?php echo $assureur['num_airtel']; ?></td>
                                                     <td>
-                                                        <form action="#" method="post" style="display:inline;" >
-                                                            <input type="submit" value="Modifier" class="btn btn-primary btn-sm">
-                                                        </form>
-                                                        <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                                                        <button onclick="showEditForm('<?php echo $assureur['id']; ?>', '<?php echo $assureur['nom']; ?>', '<?php echo $assureur['commission']; ?>', '<?php echo $assureur['num_telma']; ?>', '<?php echo $assureur['num_orange']; ?>', '<?php echo $assureur['num_airtel']; ?>')" class="btn btn-primary btn-sm">Modifier</button>
+                                                        <!-- <a href="<?php echo site_url('assureurCtrl/supprimer/'.$assureur['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet assureur ?');">Supprimer</a> -->
                                                     </td>
                                                     
                                                 </tr>
@@ -46,6 +44,38 @@
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <div id="editFormContainer" class="form-container hidden">
+                                <h2>Modifier Assureur</h2>
+                                <form action="<?php echo site_url('assureurCtrl/modif'); ?>" method="post">
+                                    <input type="hidden" id="editFormId" name="id">
+                                    <input type="hidden" name="action" value="enregistrer">
+                                    
+                                    <div class="form-group">
+                                        <label for="editFormNom">Nom:</label>
+                                        <input type="text" id="editFormNom" name="nom" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editFormCommission">Commission:</label>
+                                        <input type="text" id="editFormCommission" name="commission" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editFormNumTelma">Numero Telma:</label>
+                                        <input type="text" id="editFormNumTelma" name="num_telma" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editFormNumOrange">Numero Orange:</label>
+                                        <input type="text" id="editFormNumOrange" name="num_orange" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editFormNumAirtel">Numero Airtel:</label>
+                                        <input type="text" id="editFormNumAirtel" name="num_airtel" class="form-control">
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                                    <button type="button" class="btn btn-secondary" onclick="hideEditForm()">Annuler</button>
+                                </form>
+                            </div>
                                     
                                 </div>
                             </div>
@@ -99,3 +129,20 @@
     </div>
 </body>
 </html>
+
+
+<script>
+    function showEditForm(id, nom, commission, num_telma, num_orange, num_airtel) {
+        document.getElementById('editFormId').value = id;
+        document.getElementById('editFormNom').value = nom;
+        document.getElementById('editFormCommission').value = commission;
+        document.getElementById('editFormNumTelma').value = num_telma;
+        document.getElementById('editFormNumOrange').value = num_orange;
+        document.getElementById('editFormNumAirtel').value = num_airtel;
+        document.getElementById('editFormContainer').classList.remove('hidden');
+    }
+
+    function hideEditForm() {
+        document.getElementById('editFormContainer').classList.add('hidden');
+    }
+    </script>

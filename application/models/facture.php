@@ -28,12 +28,12 @@ class Facture extends CI_Model {
     
     public function update($id, $data) {
         $this->db->where('id', $id);
-        return $this->db->update('utilisateur', $data);
+        return $this->db->update('facture', $data);
     }
     
     public function delete($id) {
         $this->db->where('id', $id);
-        return $this->db->update('utilisateur', array('deleted' => TRUE));
+        return $this->db->update('facture', array('deleted' => TRUE));
     }
 
     public function get_factures($limit, $offset) {

@@ -37,5 +37,27 @@ class FactureCtrl extends CI_Controller {
             $this->load->view('page/facture');
         }
     }
+
+    public function modifier($id) {
+        if ($this->input->post('action') == 'modifier') {
+            $update_data = array(
+                'date_debut' => $this->input->post('date_debut'),
+                'date_fin' => $this->input->post('date_fin'),
+                'police_assurance' => $this->input->post('police_assurance'),
+                'id_assureur' => $this->input->post('id_assureur'),
+                'id_vehicule' => $this->input->post('id_vehicule')
+            );
+            $this->Facture->update($id, $update_data);
+            redirect('factureCtrl/index');
+        } else {
+            $data['facture'] = $this->Facture->get_facture($id);
+            $this->load->view('page/facture', $data);
+        }
+    }
+
+    public function supprimer($id) {
+        $this->Facture->delete($id);
+        redirect('factureCtrl/index');
+    }
 }
 ?>

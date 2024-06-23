@@ -13,11 +13,11 @@ class Assureur extends CI_Model {
 
     public function update($id, $data) {
         $this->db->where('id', $id);
-        return $this->db->update('utilisateur', $data);
+        return $this->db->update('assureur', $data);
     }
     
     public function delete($id) {
         $this->db->where('id', $id);
-        return $this->db->update('utilisateur', array('deleted' => TRUE));
+        return $this->db->update('assureur', array('deleted' => TRUE));
     }
 }

@@ -183,13 +183,7 @@
     
         <ul class="nav">
 
-        <li class="nav-item nav-category"></li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" >
-                <i class="menu-icon mdi mdi-home"></i>
-                <span class="menu-title">Dashboard</span>
-                </a>
-        </li>
+        
         
         <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('rechercheCtrl/index'); ?>" >
@@ -240,6 +234,14 @@
                 <a class="nav-link" href="<?php echo site_url('FrequenceCtrl/index'); ?>" >
                     <i class="menu-icon mdi mdi-elevation-rise"></i>
                     <span class="menu-title">Frequence de payement</span>
+                </a>
+            </li>
+
+            <li class="nav-item nav-category">Affaire</li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url('ChiffredAffaireCtrl/index'); ?>" >
+                <i class="menu-icon mdi mdi-briefcase"></i>
+                <span class="menu-title">Chiffre d'Affaire</span>
                 </a>
             </li>
 

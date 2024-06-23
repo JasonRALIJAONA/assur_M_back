@@ -351,4 +351,3 @@ INSERT INTO payement (date_payement, valeur, frequence, id_vehicule, id_utilisat
 ('2025-08-15', 500.00, 1, 1, 1),
 ('2025-09-15', 500.00, 1, 1, 1);
 
-

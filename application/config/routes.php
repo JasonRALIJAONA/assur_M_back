@@ -57,3 +57,6 @@ $route['translate_uri_dashes'] = FALSE;
 // $route['statistiqueCtrl'] = 'statistiqueCtrl/index';
 $route['statistiqueCtrl/get_stats'] = 'statistiqueCtrl/get_stats';
 
+$route['chiffre_affaire'] = 'ChiffredAffaireCtrl/index';
+$route['chiffre_affaire/get'] = 'ChiffredAffaireCtrl/get_chiffre_affaire';
+
