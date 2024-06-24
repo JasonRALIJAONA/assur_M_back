@@ -11,12 +11,23 @@ CREATE TABLE operateur(
 CREATE TABLE assureur(
    id SERIAL,
    nom VARCHAR(50) ,
-   commission NUMERIC(7,2),
+   commission NUMERIC(7,2)  ,
    num_telma VARCHAR(20) ,
    num_orange VARCHAR(20) ,
    num_airtel VARCHAR(20) ,
    PRIMARY KEY(id)
 );
+
+CREATE TABLE options(
+   id SERIAL,
+   nom VARCHAR(100)  NOT NULL,
+   descri TEXT,
+   valeur NUMERIC(12,2)   NOT NULL,
+   id_assureur INTEGER,
+   FOREIGN KEY(id_assureur) REFERENCES assureur(id),
+   PRIMARY KEY(id)
+);
+
 
 CREATE TABLE utilisateur(
    id SERIAL,
@@ -28,12 +39,13 @@ CREATE TABLE utilisateur(
    mdp VARCHAR(50)  NOT NULL,
    telephone VARCHAR(20)  NOT NULL,
    deleted BOOLEAN DEFAULT FALSE NOT NULL,
-   admin BOOLEAN DEFAULT FALSE NOT NULL, -- ajout nouveau colonne
    id_operateur INT,
-   solde DECIMAL(12,2),
+   solde DECIMAL(12,2) DEFAULT 100000.0,
+   admin BOOLEAN DEFAULT FALSE NOT NULL,
    FOREIGN KEY(id_operateur) REFERENCES operateur(id),
    PRIMARY KEY(id)
 );
+
 
 CREATE TABLE type_vehicule(
    id SERIAL,
@@ -41,15 +53,44 @@ CREATE TABLE type_vehicule(
    PRIMARY KEY(id)
 );
 
-CREATE TABLE options(
+
+CREATE TABLE carburant(
    id SERIAL,
-   nom VARCHAR(100)  NOT NULL,
-   descri TEXT,
-   valeur NUMERIC(12,2)   NOT NULL,
+   nom VARCHAR(50) ,
+   prix NUMERIC(12,2)  ,
    id_assureur INTEGER,
    PRIMARY KEY(id),
    FOREIGN KEY(id_assureur) REFERENCES assureur(id)
 );
+
+CREATE TABLE usage(
+   id SERIAL,
+   nom VARCHAR(100) ,
+   valeur NUMERIC(8,2)  ,
+   id_assureur INTEGER,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_assureur) REFERENCES assureur(id)
+);
+
+CREATE TABLE annee_fabrication(
+   id SERIAL,
+   debut INTEGER,
+   fin INTEGER,
+   prix NUMERIC(12,2)  ,
+   id_assureur INTEGER,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_assureur) REFERENCES assureur(id)
+);
+
+CREATE TABLE puissance(
+   id SERIAL,
+   prix_chevaux NUMERIC(12,2)  ,
+   id_assureur INTEGER,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_assureur) REFERENCES assureur(id)
+);
+
+
 
 CREATE TABLE vehicule(
    id SERIAL,
@@ -61,6 +102,13 @@ CREATE TABLE vehicule(
    id_utilisateur INTEGER NOT NULL,
    id_assureur INTEGER,
    id_options INTEGER,
+
+   id_carburant INTEGER REFERENCES carburant(id) ,
+   id_utilisation INTEGER REFERENCES usage(id) ,
+   id_annee_fabrication INTEGER REFERENCES annee_fabrication(id),
+   a_payer NUMERIC(10,2),                                            -- VOLA ALOHA RAHA PAR MOIS
+   carburant VARCHAR(50) ,
+   utilisation VARCHAR(100) ,
    PRIMARY KEY(id),
    FOREIGN KEY(id_type) REFERENCES type_vehicule(id),
    FOREIGN KEY(id_options) REFERENCES options(id),
@@ -96,6 +144,7 @@ CREATE TABLE service(
    nom VARCHAR(100)  NOT NULL,
    PRIMARY KEY(id)
 );
+
 
 CREATE TABLE carburant(
    id SERIAL,
@@ -133,10 +182,21 @@ CREATE TABLE usage(
    FOREIGN KEY(id_assureur) REFERENCES assureur(id)
 );
 
+
 CREATE TABLE etat(
    id SERIAL,
    libelle VARCHAR(100) ,
    valeur NUMERIC(12,2)  ,
+   id_assureur INTEGER,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_assureur) REFERENCES assureur(id)
+);
+
+CREATE TABLE options(
+   id SERIAL,
+   nom VARCHAR(100)  NOT NULL,
+   descri TEXT,
+   valeur NUMERIC(12,2)   NOT NULL,
    id_assureur INTEGER,
    PRIMARY KEY(id),
    FOREIGN KEY(id_assureur) REFERENCES assureur(id)
@@ -155,3 +215,13 @@ CREATE TABLE payement(
 );
 
 
+
+CREATE TABLE liste_vehicule(
+   id SERIAL,
+   immatriculation VARCHAR(10) NOT NULL,
+   puissance INTEGER NOT NULL,
+   place INTEGER NOT NULL,
+   marque VARCHAR(50) NOT NULL,
+   carburant VARCHAR(50),
+   email_utilisateur INTEGER NOT NULL
+);

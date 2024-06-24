@@ -28,6 +28,7 @@
             }
         }
     </style>
+
 </head>
 <body>
     <!-- Sidebar -->
@@ -35,11 +36,18 @@
         <ul class="nav">
 
         
-        
+        <li class="nav-item nav-category">Home</li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url('userCtrl/index'); ?>" >
+                <i class="menu-icon mdi mdi-magnify"></i>
+                <span class="menu-title">Recherche</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('rechercheCtrl/index'); ?>" >
                 <i class="menu-icon mdi mdi-magnify"></i>
-                <span class="menu-title">Recherche</span>
+                <span class="menu-title">Recherche Multicritere</span>
                 </a>
             </li>
             

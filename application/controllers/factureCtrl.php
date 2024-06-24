@@ -10,7 +10,7 @@ class FactureCtrl extends CI_Controller {
     }
 
     public function index($page = 1) {
-        $limit = 10;
+        $limit = 6;
         $offset = ($page - 1) * $limit;
         
         $total_factures = $this->Facture->get_count();

@@ -20,25 +20,33 @@ class Login extends CI_Controller {
 
         if ($reponse == 0) {
             $data['error'] = "Identifiants incorrects ou mot de passe incorecte";
-            $this->load->view("page/login", $data); // page login
+            $this->load->view("page/login", $data);
         } else {
-            // redirect('login/accueil'); // page accueil    
-            echo ("Tafiditra ato @ condition");
-                if ($this->Utilisateur->is_admin($reponse)) {
-                    redirect('login/accueil');
-                    echo ("IF");
-                    $data['valid'] = "Vous avez les droits d'administrateur";
-                    $this->load->view("page/login", $data);
-                } else {
-                    echo ("ELSE");
-                    $data['error'] = "Vous n'avez pas les droits d'administrateur";
-                    $this->load->view("page/login", $data);
-                }        
+            redirect('login/accueil');   
+
+            // echo ("Tafiditra ato @ condition");
+            //     if ($this->Utilisateur->is_admin($reponse)) {
+            //         redirect('login/accueil');
+            //         echo ("IF");
+            //         $data['valid'] = "Vous avez les droits d'administrateur";
+            //         $this->load->view("page/login", $data);
+            //     } else {
+            //         echo ("ELSE");
+            //         $data['error'] = "Vous n'avez pas les droits d'administrateur";
+            //         $this->load->view("page/login", $data);
+            //     }        
         }
     }
 
-    public function accueil() {
-        $data['utilisateurs'] = $this->Utilisateur->get_all();
+    public function accueil($page = 1) {
+        $limit = 5;
+        $offset = ($page -1) * $limit;
+
+        $total_utilisateurs = $this->Utilisateur->get_count();
+        $data['utilisateurs'] = $this->Utilisateur->get_user($limit, $offset);
+        $data['total_pages'] = ceil($total_utilisateurs / $limit);
+        $data['current_page'] = $page;
+
         $data['utilisateur_modif'] = null;
 
         if ($this->input->post('action') == 'modifier') {
@@ -50,7 +58,7 @@ class Login extends CI_Controller {
                 'email' => $this->input->post('email'),
             );
             $this->Utilisateur->update($id, $update_data);
-            redirect('login/accueil');
+            redirect('login/accueil/' . $page);
         }
 
         $data['contents'] = 'page/accueil';

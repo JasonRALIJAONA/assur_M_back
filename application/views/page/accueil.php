@@ -13,9 +13,9 @@
                                                 <th>Nom</th>
                                                 <th>Prenom</th>
                                                 <th>Adresse</th>
-                                                <th>Naissance</th>
+                                                <!-- <th>Naissance</th> -->
                                                 <th>Telephone</th>
-                                                <th>Solde</th>
+                                                <!-- <th>Solde</th> -->
                                                 <th>Email</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -27,9 +27,9 @@
                                                 <td><?php echo $utilisateur['nom']; ?></td>
                                                 <td><?php echo $utilisateur['prenom']; ?></td>
                                                 <td><?php echo $utilisateur['adresse']; ?></td>
-                                                <td><?php echo $utilisateur['naissance']; ?></td>
+                                                <!-- <td><?php echo $utilisateur['naissance']; ?></td> -->
                                                 <td><?php echo $utilisateur['telephone']; ?></td>
-                                                <td><?php echo $utilisateur['solde']; ?></td>
+                                                <!-- <td><?php echo $utilisateur['solde']; ?></td> -->
                                                 <td><?php echo $utilisateur['email']; ?></td>
                                                 <td>
                                                     <form action="#" method="post" style="display:inline;" onsubmit="showEditForm(<?php echo $utilisateur['id']; ?>, '<?php echo $utilisateur['email']; ?>'); return false;">
@@ -42,6 +42,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div class="pagination">
+                                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                        <a href="<?php echo site_url('login/accueil/' . $i); ?>" class="<?php echo ($i == $current_page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                                    <?php endfor; ?>
+                                </div>
+
                                 <div id="editFormContainer" class="form-container hidden">
                                     <h2>Modifier Mail Utilisateur</h2>
                                     <form action="<?php echo site_url('login/accueil'); ?>" method="post" >

@@ -9,24 +9,33 @@ class ChiffredAffaireCtrl extends CI_Controller {
     }
 
     public function index() {
-
         $data['contents'] = 'page/chiffredAffaire';
         $this->load->view('templates/template', $data);
-
-        // $this->load->view('page/chiffredAffaire');
     }
 
     public function get_daily_chiffre_affaire() {
-        $annee = $this->input->post('year');
-        $mois = $this->input->post('month');
-        $id_assureur = 1; // You can set this to a specific assureur ID or get it dynamically
+        $debut = $this->input->post('debut');
+        $fin = $this->input->post('fin');
+        $id_assureur = 1; // idAssureur
 
-        $debut = "$annee-$mois-01";
-        $fin = date("Y-m-t", strtotime($debut)); // Get the last day of the month
+        // $debut = "$annee-$mois-01";
+        // $fin = date("Y-m-t", strtotime($debut)); 
 
-        $result = $this->Chiffre_Affaire->get_daily_chiffre_affaire($id_assureur, $debut, $fin);
+        $result = $this->Chiffre_Affaire->get_daily_chiffre_affaire($debut, $fin);
         $data = ['daily_chiffre_affaire' => $result];
 
+        echo json_encode($data);
+    }
+
+    public function get_chiffre_affaire() {
+        $debut = $this->input->post('debut');
+        $fin = $this->input->post('fin');
+       
+        $result = $this->Chiffre_Affaire->get_chiffre_affaire($debut, $fin);
+        $details = $this->Chiffre_Affaire->get_daily_chiffre_affaire($debut, $fin);
+        $data = ['chiffre_affaire' => $result,
+                'details' => $details ];
+       
         echo json_encode($data);
     }
 }

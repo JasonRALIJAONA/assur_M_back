@@ -7,8 +7,6 @@ WHERE p.date_payement BETWEEN '2023-01-01' AND '2025-12-31'
 GROUP BY o.nom
 ORDER BY usage DESC;
 
-
-
 -- Frequence de paiement
 SELECT EXTRACT(YEAR FROM f.date_debut) AS annee, 
 EXTRACT(MONTH FROM f.date_debut) AS mois, 
@@ -46,7 +44,6 @@ GROUP BY a.nom, f.id_assureur
 ORDER BY a.nom, f.id_assureur
 
 
-
 -- Chiffre d'affaire d'une assurance
 SELECT a.nom, p.date_payement,
 SUM(p.valeur*(100-a.commission)/100) AS chiffre_affaire
@@ -68,7 +65,6 @@ GROUP BY a.nom
 ORDER BY chiffre_affaire DESC;
 
 
-
 -- Chiffre d'affaire par assurance
 SELECT a.nom, p.date_payement,
 SUM(p.valeur*a.commission/100) AS chiffre_affaire
@@ -87,3 +83,11 @@ JOIN assureur a ON v.id_assureur = a.id
 WHERE p.date_payement BETWEEN '2023-01-01' AND '2023-03-31'
 GROUP BY a.nom
 ORDER BY chiffre_affaire DESC;
+
+SELECT 
+SUM(p.valeur*a.commission/100) AS chiffre_affaire,
+COUNT(v.id_utilisateur) AS nombre_utilisateurs
+FROM payement p
+JOIN vehicule v ON p.id_vehicule = v.id
+JOIN assureur a ON v.id_assureur = a.id
+WHERE p.date_payement BETWEEN '2023-01-01' AND '2024-03-31';

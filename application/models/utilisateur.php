@@ -26,6 +26,9 @@ class Utilisateur extends CI_Model {
         $query = $this->db->get('utilisateur');
         return $query->result_array();
     }
+    public function get_count() {
+        return $this->db->count_all('utilisateur');
+    }
     
     public function insert($data) {
         $data['deleted'] = FALSE;
@@ -47,4 +50,32 @@ class Utilisateur extends CI_Model {
         $result = $query->row_array();
         return isset($result['admin']) ? (bool) $result['admin'] : FALSE;
     }
+    public function get_user($limit, $offset) {
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('utilisateur');
+        return $query->result_array();
+    }
+
+    public function search_users($criteria, $limit, $offset) {
+        $this->db->like('nom', $criteria);
+        $this->db->or_like('prenom', $criteria);
+        $this->db->or_like('email', $criteria);
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('utilisateur');
+        return $query->result_array();
+    }
+    
+    public function search_users_count($criteria) {
+        $this->db->like('nom', $criteria);
+        $this->db->or_like('prenom', $criteria);
+        $this->db->or_like('email', $criteria);
+        return $this->db->count_all_results('utilisateur');
+    }
+    
+    public function get_users($limit, $offset) {
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('utilisateur');
+        return $query->result_array();
+    }
+    
 }
