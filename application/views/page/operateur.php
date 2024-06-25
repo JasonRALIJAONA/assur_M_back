@@ -14,7 +14,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nom</th>
-                                <th>Actions</th>
+                                <!-- <th>Actions</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -22,12 +22,12 @@
                             <tr>
                                 <td><?php echo $operateur['id']; ?></td>
                                 <td><?php echo $operateur['nom']; ?></td>
-                                <td>
+                                <!-- <td>
                                     <form action="#" method="post" style="display:inline;" >
                                         <input type="submit" value="Modifier" class="btn btn-primary btn-sm">
                                     </form>
                                     <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
-                                </td>
+                                </td> -->
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

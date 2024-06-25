@@ -10,17 +10,18 @@ class FactureCtrl extends CI_Controller {
     }
 
     public function index($page = 1) {
-        $limit = 6;
+        $limit = 8;
         $offset = ($page - 1) * $limit;
         
         $total_factures = $this->Facture->get_count();
-
+    
         $data['factures'] = $this->Facture->get_factures($limit, $offset);
         $data['total_pages'] = ceil($total_factures / $limit);
         $data['current_page'] = $page;
         $data['contents'] = 'page/facture';
         $this->load->view('templates/template', $data);
     }
+    
 
     public function ajouter() {
         if ($this->input->post('action') == 'ajouter') {

@@ -45,11 +45,17 @@ class Utilisateur extends CI_Model {
         return $this->db->update('utilisateur', array('deleted' => TRUE));
     }
 
+    public function get_user_info($id) {
+        $query = $this->db->select('nom, prenom')->get_where('utilisateur', array('id' => $id));
+        return $query->row_array();
+    }
+
     public function is_admin($id) {
         $query = $this->db->select('admin')->get_where('utilisateur', array('id' => $id));
         $result = $query->row_array();
-        return isset($result['admin']) ? (bool) $result['admin'] : FALSE;
+        return isset($result['admin']) ? ($result['admin'] === 'true') : FALSE;
     }
+    
     public function get_user($limit, $offset) {
         $this->db->limit($limit, $offset);
         $query = $this->db->get('utilisateur');

@@ -70,10 +70,10 @@
 
                             <form class="pt-3" action="<?php echo site_url('login/seconnecter'); ?> " method="post">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" name="mail" id="identifiant" placeholder="Email" value="">
+                                    <input type="email" class="form-control form-control-lg" name="mail" id="identifiant" placeholder="Email" value="andrianjafinoro.johary@gmail.com ">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="mdp" name="mdp" placeholder="Password" value="">
+                                    <input type="password" class="form-control form-control-lg" id="mdp" name="mdp" placeholder="Password" value="mdp234">
                                 </div>
 
                                     <?php if (isset($error)): ?>

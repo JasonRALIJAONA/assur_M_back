@@ -84,11 +84,30 @@
                                     <button type="button" class="btn btn-secondary" onclick="hideEditForm()">Annuler</button>
                                 </form>
                             </div>
+                            
+                            
                             <div class="pagination">
-                                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                <?php if ($current_page > 1): ?>
+                                    <a href="<?php echo site_url('factureCtrl/index/1'); ?>">1</a>
+                                    <?php if ($current_page > 2): ?>
+                                        <span>...</span>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                    
+                                <?php for ($i = max(1, $current_page - 1); $i <= min($current_page + 1, $total_pages); $i++): ?>
                                     <a href="<?php echo site_url('factureCtrl/index/' . $i); ?>" class="<?php echo ($i == $current_page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
                                 <?php endfor; ?>
+                                
+                                <?php if ($current_page < $total_pages - 1): ?>
+                                    <?php if ($current_page < $total_pages - 2): ?>
+                                        <span>...</span>
+                                    <?php endif; ?>
+                                    <a href="<?php echo site_url('factureCtrl/index/' . $total_pages); ?>"><?php echo $total_pages; ?></a>
+                                <?php endif; ?>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -117,5 +136,10 @@
         document.getElementById('editFormContainer').classList.add('hidden');
     }
     </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
 </body>
 </html>

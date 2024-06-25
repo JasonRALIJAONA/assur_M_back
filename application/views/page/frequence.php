@@ -33,6 +33,7 @@
                 <button id="viewStats" class="btn btn-primary mb-4">Voir</button>            
                 <div class="row">
                     <div class="col-md-6">
+                        <p class="text-center" id="">Nombre Total des Utilisateurs qui paye l'Assurance: </p>
                         <canvas id="barChart"></canvas>
                         <p class="text-center" id="totalUtilisateurs">Nombre d'utilisateur pendant cette periode: </p>
                     </div>

@@ -18,6 +18,8 @@ CREATE TABLE assureur(
    PRIMARY KEY(id)
 );
 
+
+
 CREATE TABLE utilisateur(
    id SERIAL,
    nom VARCHAR(50)  NOT NULL,
@@ -35,11 +37,7 @@ CREATE TABLE utilisateur(
    PRIMARY KEY(id)
 );
 
-CREATE TABLE type_vehicule(
-   id SERIAL,
-   nom VARCHAR(50) ,
-   PRIMARY KEY(id)
-);
+
 
 CREATE TABLE options(
    id SERIAL,
@@ -132,6 +130,15 @@ CREATE TABLE usage(
    PRIMARY KEY(id),
    FOREIGN KEY(id_assureur) REFERENCES assureur(id)
 );
+
+INSERT INTO usage ( nom) VALUES
+( 'Personal'),
+( 'Commercial'),
+( 'Rental'),
+( 'Leasing'),
+( 'Company Car'),
+( 'Private');
+
 
 CREATE TABLE etat(
    id SERIAL,

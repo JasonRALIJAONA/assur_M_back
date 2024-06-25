@@ -113,8 +113,11 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <p>ADMIN</p>
+                        ADMIN
+                        <!-- <p><?php echo isset($nom) && isset($prenom) ? htmlspecialchars($nom . ' ' . $prenom) : 'Nom non défini'; ?></p> -->
                     </li>
+
+
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
